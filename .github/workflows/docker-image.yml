@@ -35,7 +35,11 @@ jobs:
                 with:
                     images: |
                         ghcr.io/daniel-marynicz/keycloak
-            -   name: test
+                    labels: |
+                        org.opencontainers.image.description=Open Source Identity and Access Management
+                        org.opencontainers.image.title=Keycloak
+                        org.opencontainers.image.version=${{ inputs.version }}
+            -   name: Print the  build options without build
                 env:
                     VERSION: "${{ inputs.version }}"
                     TAG: "ghcr.io/daniel-marynicz/keycloak:${{ inputs.version }}"
