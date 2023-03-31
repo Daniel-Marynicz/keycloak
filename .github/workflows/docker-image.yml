@@ -32,9 +32,9 @@ jobs:
                 name: Docker keycloak  meta
                 id: keycloak
                 uses: docker/metadata-action@v4
-                images: |
-                    ghcr.io/daniel-marynicz/keycloak
-
+                with:
+                    images: |
+                        ghcr.io/daniel-marynicz/keycloak
             -   name: test
                 env:
                     VERSION: "${{ inputs.version }}"
