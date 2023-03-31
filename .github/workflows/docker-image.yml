@@ -32,6 +32,9 @@ jobs:
                 name: Docker keycloak  meta
                 id: keycloak
                 uses: docker/metadata-action@v4
+                images: |
+                    ghcr.io/daniel-marynicz/keycloak
+
             -   name: Bake keycloak and push
                 uses: docker/bake-action@v2
                 if: ${{ github.event_name != 'pull_request' }}
@@ -42,4 +45,4 @@ jobs:
                     files: |
                         ./docker-bake.hcl
                         ${{ steps.keycloak.outputs.bake-file }}
-                    push: true
+                    push: false
