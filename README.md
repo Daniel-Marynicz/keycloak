@@ -1,4 +1,4 @@
-# Keycloak Docker Image
+# Keycloak Docker Image based on amazoncorretto
 
 If you want to use this docker image, you should use `ghcr.io/daniel-marynicz/keycloak:<VERSION>` or `ghcr.io/daniel-marynicz/keycloak:<VERSION>-alpine` as the base image.
 
