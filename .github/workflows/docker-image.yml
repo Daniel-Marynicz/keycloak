@@ -32,6 +32,20 @@ jobs:
                 name: Docker keycloak  meta
                 id: keycloak
                 uses: docker/metadata-action@v4
+                with:
+                    images: |
+                        ghcr.io/daniel-marynicz/keycloak
+                    labels: |
+                        org.opencontainers.image.description=Open Source Identity and Access Management
+                        org.opencontainers.image.title=Keycloak
+                        org.opencontainers.image.version=${{ inputs.version }}
+            -   name: Print the  build options without build
+                env:
+                    VERSION: "${{ inputs.version }}"
+                    TAG: "ghcr.io/daniel-marynicz/keycloak:${{ inputs.version }}"
+                run: |
+                    cat "${{ steps.keycloak.outputs.bake-file }}"
+                    docker buildx bake  -f docker-bake.hcl -f "${{ steps.keycloak.outputs.bake-file }}" --print
             -   name: Bake keycloak and push
                 uses: docker/bake-action@v2
                 if: ${{ github.event_name != 'pull_request' }}
