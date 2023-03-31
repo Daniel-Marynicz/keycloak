@@ -56,4 +56,4 @@ jobs:
                     files: |
                         ./docker-bake.hcl
                         ${{ steps.keycloak.outputs.bake-file }}
-                    push: false
+                    push: true
